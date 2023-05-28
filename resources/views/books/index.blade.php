@@ -12,6 +12,9 @@
     <h2>読書の記録ができます。</h2>
     <div>
         <p>登録フォーム</p>
+        @if (session('feedback.success'))
+            <p style="color: green;">{{ session('feedback.success') }}</p>
+        @endif
         <form action="{{ route('book.create') }}" method="post">
             @csrf
             <label for="book-title">タイトル</label>
@@ -29,6 +32,11 @@
                 <summary>{{ $book->title }}</summary>
                 <div>
                     <a href="{{ route('book.update.index', ['id' => $book->id]) }}">編集</a>
+                    <form action="{{ route('book.delete', ['id' => $book->id]) }}" method="post">
+                        @csrf
+                        @method('delete')
+                        <button type="submit">削除</button>
+                    </form>
                 </div>
             </details>
         @endforeach

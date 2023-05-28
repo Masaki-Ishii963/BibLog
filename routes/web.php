@@ -21,3 +21,5 @@ Route::get('/book/update/{id}', \App\Http\Controllers\Book\Update\IndexControlle
     ->name('book.update.index');
 Route::put('/book/update/{id}', \App\Http\Controllers\Book\Update\PutController::class)
     ->name('book.update.put');
+Route::delete('/book/delete/{id}', \App\Http\Controllers\Book\DeleteController::class)
+    ->name('book.delete');
