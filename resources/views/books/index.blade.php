@@ -25,7 +25,12 @@
     </div>
     <div>
         @foreach ($books as $book)
-            <p>{{ $book->title }}</p>
+            <details>
+                <summary>{{ $book->title }}</summary>
+                <div>
+                    <a href="{{ route('book.update.index', ['id' => $book->id]) }}">編集</a>
+                </div>
+            </details>
         @endforeach
     </div>
 </body>
