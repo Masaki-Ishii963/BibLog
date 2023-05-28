@@ -10,5 +10,10 @@
 <body>
     <h1>BibLog</h1>
     <h2>読書の記録ができます。</h2>
+    <div>
+        @foreach ($books as $book)
+            <p>{{ $book->title }}</p>
+        @endforeach
+    </div>
 </body>
 </html>

@@ -14,8 +14,7 @@ class IndexController extends Controller
     public function __invoke(Request $request)
     {
         $books = Book::all();
-        // デバッグ用
-        dd($books);
-        return view('books.index');
+        return view('books.index')
+            ->with('books', $books);
     }
 }
