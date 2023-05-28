@@ -13,4 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', \App\Http\Controllers\Books\IndexController::class);
+Route::get('/book', \App\Http\Controllers\Books\IndexController::class)
+    ->name('book.index');
+Route::post('/book/create', \App\Http\Controllers\Book\CreateController::class)
+    ->name('book.create');
