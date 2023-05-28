@@ -13,13 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/book', \App\Http\Controllers\Books\IndexController::class)
+Route::get('/', \App\Http\Controllers\Books\IndexController::class)
     ->name('book.index');
-Route::post('/book/create', \App\Http\Controllers\Book\CreateController::class)
+Route::post('/create', \App\Http\Controllers\Book\CreateController::class)
     ->name('book.create');
-Route::get('/book/update/{id}', \App\Http\Controllers\Book\Update\IndexController::class)
+Route::get('/update/{id}', \App\Http\Controllers\Book\Update\IndexController::class)
     ->name('book.update.index');
-Route::put('/book/update/{id}', \App\Http\Controllers\Book\Update\PutController::class)
+Route::put('/update/{id}', \App\Http\Controllers\Book\Update\PutController::class)
     ->name('book.update.put');
-Route::delete('/book/delete/{id}', \App\Http\Controllers\Book\DeleteController::class)
+Route::delete('/delete/{id}', \App\Http\Controllers\Book\DeleteController::class)
     ->name('book.delete');
