@@ -12,6 +12,9 @@
     <div>
         <a href="{{ route('book.index') }}">一覧に戻る</a>
         <p>登録フォーム</p>
+        @if (session('feedback.success'))
+            <p style="color: green;">{{ session('feedback.success') }}</p>
+        @endif
         <form action="{{ route('book.update.put', ['id' => $book->id]) }}" method="post">
             @method ('PUT')
             @csrf
