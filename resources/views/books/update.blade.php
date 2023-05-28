@@ -8,30 +8,24 @@
     <title>BibLog</title>
 </head>
 <body>
-    <h1>BibLog</h1>
-    <h2>読書の記録ができます。</h2>
+    <h1>本のタイトルを編集します</h1>
     <div>
+        <a href="{{ route('book.index') }}">一覧に戻る</a>
         <p>登録フォーム</p>
-        <form action="{{ route('book.create') }}" method="post">
+        @if (session('feedback.success'))
+            <p style="color: green;">{{ session('feedback.success') }}</p>
+        @endif
+        <form action="{{ route('book.update.put', ['id' => $book->id]) }}" method="post">
+            @method ('PUT')
             @csrf
             <label for="book-title">タイトル</label>
             <span>255文字まで</span>
-            <textarea id="book-title" type="text" name="book" placeholder="タイトルを入力"></textarea>
+            <textarea id="book-title" type="text" name="book" placeholder="タイトルを入力"> {{$book->title}} </textarea>
             @error('book')
             <p style="color: red;">{{ $message }}</p>
             @enderror
-            <button type="submit">登録</button>
+            <button type="submit">編集</button>
         </form>
-    </div>
-    <div>
-        @foreach ($books as $book)
-            <details>
-                <summary>{{ $book->title }}</summary>
-                <div>
-                    <a href="{{ route('book.update.index', ['id' => $book->id]) }}">編集</a>
-                </div>
-            </details>
-        @endforeach
     </div>
 </body>
 </html>
