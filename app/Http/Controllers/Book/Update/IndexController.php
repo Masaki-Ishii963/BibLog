@@ -15,6 +15,7 @@ class IndexController extends Controller
     public function __invoke(Request $request)
     {
         $id = (int)$request->route('id');
-        dd($id);
+        $book = Book::where('id', $id)->firstOrFail();
+        return view('books.update')->with('book', $book);
     }
 }
