@@ -11,18 +11,20 @@ class CreateRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        // 誰でもリクエストできるようにする
+        return true;
     }
 
     /**
      * Get the validation rules that apply to the request.
+     * https://readouble.com/laravel/10.x/ja/validation.html
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array|string>
      */
     public function rules(): array
     {
         return [
-            //
+            'title' => 'required|max:255'
         ];
     }
 }
