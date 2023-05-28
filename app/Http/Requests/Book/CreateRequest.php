@@ -27,4 +27,9 @@ class CreateRequest extends FormRequest
             'book' => 'required|max:255'
         ];
     }
+
+    public function getBookTitle(): string
+    {
+        return $this->input('book');
+    }
 }
