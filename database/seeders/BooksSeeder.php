@@ -4,8 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
+use App\Models\Book;
 
 class BooksSeeder extends Seeder
 {
@@ -14,10 +13,6 @@ class BooksSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('books')->insert([
-            'title' => Str::random(20),
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
+        Book::factory()->count(10)->create();
     }
 }
