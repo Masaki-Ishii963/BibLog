@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Books;
+namespace App\Http\Controllers\Book;
 
 use App\Http\Controllers\Controller;
 use App\Models\Book;
@@ -14,7 +14,7 @@ class IndexController extends Controller
     public function __invoke(Request $request)
     {
         $books = Book::all();
-        return view('books.index')
+        return view('book.index')
             ->with('books', $books);
     }
 }
