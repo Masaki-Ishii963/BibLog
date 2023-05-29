@@ -13,7 +13,8 @@ class IndexController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $books = Book::all();
+        $books = Book::orderBy('created_at', 'desc')
+            ->get();
         return view('book.index')
             ->with('books', $books);
     }
