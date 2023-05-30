@@ -31,7 +31,7 @@
     <div>
         @foreach ($books as $book)
             <details>
-                <summary>{{ $book->title }}</summary>
+                <summary>{{ $book->title }} by {{ $book->user->name }}</summary>
                 <div>
                     <a href="{{ route('book.update.index', ['id' => $book->id]) }}">編集</a>
                     <form action="{{ route('book.delete', ['id' => $book->id]) }}" method="post">
