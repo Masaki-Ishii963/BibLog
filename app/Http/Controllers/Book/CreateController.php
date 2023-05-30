@@ -14,6 +14,7 @@ class CreateController extends Controller
     public function __invoke(CreateRequest $request)
     {
         $book = new Book();
+        $book->user_id = $request->userId();
         $book->title = $request->getBookTitle();
         $book->save();
         return redirect()->route('book.index');

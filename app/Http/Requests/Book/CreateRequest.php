@@ -28,6 +28,13 @@ class CreateRequest extends FormRequest
         ];
     }
 
+    // Requestクラスのuser()メソッドは、認証済みのユーザーを返す
+    // https://readouble.com/laravel/8.x/ja/requests.html#retrieving-the-authenticated-user
+    public function userId(): int
+    {
+        return $this->user()->id;
+    }
+
     public function getBookTitle(): string
     {
         return $this->input('book');
