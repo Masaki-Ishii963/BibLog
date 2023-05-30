@@ -16,6 +16,6 @@ class IndexController extends Controller
     {
         $id = (int)$request->route('id');
         $book = Book::where('id', $id)->firstOrFail();
-        return view('books.update')->with('book', $book);
+        return view('book.update')->with('book', $book);
     }
 }
