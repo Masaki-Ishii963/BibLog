@@ -10,22 +10,24 @@
 <body>
     <h1>BibLog</h1>
     <h2>読書の記録ができます。</h2>
-    <div>
-        <p>登録フォーム</p>
-        @if (session('feedback.success'))
-            <p style="color: green;">{{ session('feedback.success') }}</p>
-        @endif
-        <form action="{{ route('book.create') }}" method="post">
-            @csrf
-            <label for="book-title">タイトル</label>
-            <span>255文字まで</span>
-            <textarea id="book-title" type="text" name="book" placeholder="タイトルを入力"></textarea>
-            @error('book')
-            <p style="color: red;">{{ $message }}</p>
-            @enderror
-            <button type="submit">登録</button>
-        </form>
-    </div>
+    @auth
+        <div>
+            <p>登録フォーム</p>
+            @if (session('feedback.success'))
+                <p style="color: green;">{{ session('feedback.success') }}</p>
+            @endif
+            <form action="{{ route('book.create') }}" method="post">
+                @csrf
+                <label for="book-title">タイトル</label>
+                <span>255文字まで</span>
+                <textarea id="book-title" type="text" name="book" placeholder="タイトルを入力"></textarea>
+                @error('book')
+                <p style="color: red;">{{ $message }}</p>
+                @enderror
+                <button type="submit">登録</button>
+            </form>
+        </div>
+    @endauth
     <div>
         @foreach ($books as $book)
             <details>

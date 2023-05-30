@@ -22,6 +22,7 @@ Route::get('/', function () {
 Route::get('/book', \App\Http\Controllers\Book\IndexController::class)
     ->name('book.index');
 Route::post('/create', \App\Http\Controllers\Book\CreateController::class)
+    ->middleware('auth')
     ->name('book.create');
 Route::get('/update/{id}', \App\Http\Controllers\Book\Update\IndexController::class)
     ->name('book.update.index');
