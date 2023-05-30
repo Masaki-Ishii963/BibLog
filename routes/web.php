@@ -21,15 +21,16 @@ Route::get('/', function () {
 // Book
 Route::get('/book', \App\Http\Controllers\Book\IndexController::class)
     ->name('book.index');
-Route::post('/create', \App\Http\Controllers\Book\CreateController::class)
-    ->middleware('auth')
+Route::middleware('auth')->group(function () {
+    Route::post('/create', \App\Http\Controllers\Book\CreateController::class)
     ->name('book.create');
-Route::get('/update/{id}', \App\Http\Controllers\Book\Update\IndexController::class)
+    Route::get('/update/{id}', \App\Http\Controllers\Book\Update\IndexController::class)
     ->name('book.update.index');
-Route::put('/update/{id}', \App\Http\Controllers\Book\Update\PutController::class)
+    Route::put('/update/{id}', \App\Http\Controllers\Book\Update\PutController::class)
     ->name('book.update.put');
-Route::delete('/delete/{id}', \App\Http\Controllers\Book\DeleteController::class)
+    Route::delete('/delete/{id}', \App\Http\Controllers\Book\DeleteController::class)
     ->name('book.delete');
+});
 
 // Laravel Breezeで自動生成されたルーティング
 Route::get('/dashboard', function () {
