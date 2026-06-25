@@ -17,4 +17,7 @@ ENV LOG_CHANNEL stderr
 # Allow composer to run as root
 ENV COMPOSER_ALLOW_SUPERUSER 1
 
+# Node.jsとnpmをインストール
+RUN apk update && apk add --no-cache nodejs npm
+
 CMD ["/start.sh"]
